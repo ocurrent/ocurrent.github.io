@@ -2,6 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.ocurrent.org/docs/ocurrent/ocurrent/</loc>
+    <lastmod>2022-09-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.ocurrent.org/docs/</loc>
+    <lastmod>2022-09-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.ocurrent.org/docs/ocurrent/</loc>
+    <lastmod>2022-09-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.ocurrent.org/</loc>
+    <lastmod>2022-09-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.ocurrent.org/docs/tutorials/build-gatsby-deployer.md/</loc>
     <lastmod>2021-01-22T00:00:00+00:00</lastmod>
   </url><url>
@@ -14,13 +26,7 @@
     <loc>https://www.ocurrent.org/docs/tutorials/ocluster/</loc>
     <lastmod>2021-01-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.ocurrent.org/docs/</loc>
-    <lastmod>2021-01-22T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.ocurrent.org/docs/tutorials/</loc>
-    <lastmod>2021-01-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.ocurrent.org/</loc>
     <lastmod>2021-01-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.ocurrent.org/docs/conf-and-papers/</loc>
@@ -41,13 +47,9 @@
   </url><url>
     <loc>https://www.ocurrent.org/examples/01_docker_build_local/</loc>
   </url><url>
-    <loc>https://www.ocurrent.org/docs/ocurrent/ocurrent/</loc>
-  </url><url>
     <loc>https://www.ocurrent.org/community/</loc>
   </url><url>
     <loc>https://www.ocurrent.org/examples/</loc>
-  </url><url>
-    <loc>https://www.ocurrent.org/docs/ocurrent/</loc>
   </url><url>
     <loc>https://www.ocurrent.org/tags/</loc>
   </url>
