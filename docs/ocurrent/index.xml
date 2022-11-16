@@ -1,19 +1,46 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>OCurrent Index on OCurrent</title>
+    <title>OCurrent</title>
     <link>https://www.ocurrent.org/docs/ocurrent/</link>
-    <description>Recent content in OCurrent Index on OCurrent</description>
+    <description>Recent content on OCurrent</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 16 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.ocurrent.org/docs/ocurrent/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Index</title>
-      <link>https://www.ocurrent.org/docs/ocurrent/ocurrent/</link>
+      <title>Example pipelines</title>
+      <link>https://www.ocurrent.org/docs/ocurrent/example_pipelines/</link>
       <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.ocurrent.org/docs/ocurrent/ocurrent/</guid>
-      <description>Index</description>
+      <guid>https://www.ocurrent.org/docs/ocurrent/example_pipelines/</guid>
+      <description>Example pipelines</description>
+    </item>
+    
+    <item>
+      <title>Internal overview</title>
+      <link>https://www.ocurrent.org/docs/ocurrent/internals/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/ocurrent/internals/</guid>
+      <description>Internal overview</description>
+    </item>
+    
+    <item>
+      <title>The build cache</title>
+      <link>https://www.ocurrent.org/docs/ocurrent/disk_cache/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/ocurrent/disk_cache/</guid>
+      <description>The build cache</description>
+    </item>
+    
+    <item>
+      <title>Write your own plugin</title>
+      <link>https://www.ocurrent.org/docs/ocurrent/writing_plugins/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/ocurrent/writing_plugins/</guid>
+      <description>Write your own plugin</description>
     </item>
     
   </channel>

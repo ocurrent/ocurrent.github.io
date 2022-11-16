@@ -8,12 +8,129 @@
     <language>en-us</language>
     <lastBuildDate>Wed, 16 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.ocurrent.org/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Index</title>
-      <link>https://www.ocurrent.org/docs/ocurrent/ocurrent/</link>
+      <title>Deploy on Docker</title>
+      <link>https://www.ocurrent.org/docs/ocaml-ci/docker-deployment/</link>
       <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://www.ocurrent.org/docs/ocurrent/ocurrent/</guid>
-      <description>Index</description>
+      <guid>https://www.ocurrent.org/docs/ocaml-ci/docker-deployment/</guid>
+      <description>Deploy on Docker</description>
+    </item>
+    
+    <item>
+      <title>Development notes</title>
+      <link>https://www.ocurrent.org/docs/ocaml-ci/dev/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/ocaml-ci/dev/</guid>
+      <description>Development notes</description>
+    </item>
+    
+    <item>
+      <title>Example pipelines</title>
+      <link>https://www.ocurrent.org/docs/ocurrent/example_pipelines/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/ocurrent/example_pipelines/</guid>
+      <description>Example pipelines</description>
+    </item>
+    
+    <item>
+      <title>Internal overview</title>
+      <link>https://www.ocurrent.org/docs/ocurrent/internals/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/ocurrent/internals/</guid>
+      <description>Internal overview</description>
+    </item>
+    
+    <item>
+      <title>Readme</title>
+      <link>https://www.ocurrent.org/docs/docker-base-images/readme/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/docker-base-images/readme/</guid>
+      <description>Readme</description>
+    </item>
+    
+    <item>
+      <title>Readme</title>
+      <link>https://www.ocurrent.org/docs/ocaml-ci/readme/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/ocaml-ci/readme/</guid>
+      <description>Readme</description>
+    </item>
+    
+    <item>
+      <title>Readme</title>
+      <link>https://www.ocurrent.org/docs/ocaml-docs-ci/readme/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/ocaml-docs-ci/readme/</guid>
+      <description>Readme</description>
+    </item>
+    
+    <item>
+      <title>Readme</title>
+      <link>https://www.ocurrent.org/docs/ocaml-multicore-ci/readme/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/ocaml-multicore-ci/readme/</guid>
+      <description>Readme</description>
+    </item>
+    
+    <item>
+      <title>Readme</title>
+      <link>https://www.ocurrent.org/docs/ocurrent-deployer/readme/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/ocurrent-deployer/readme/</guid>
+      <description>Readme</description>
+    </item>
+    
+    <item>
+      <title>Readme</title>
+      <link>https://www.ocurrent.org/docs/opam-health-check/readme/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/opam-health-check/readme/</guid>
+      <description>Readme</description>
+    </item>
+    
+    <item>
+      <title>Readme</title>
+      <link>https://www.ocurrent.org/docs/opam-repo-ci/readme/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/opam-repo-ci/readme/</guid>
+      <description>Readme</description>
+    </item>
+    
+    <item>
+      <title>The build cache</title>
+      <link>https://www.ocurrent.org/docs/ocurrent/disk_cache/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/ocurrent/disk_cache/</guid>
+      <description>The build cache</description>
+    </item>
+    
+    <item>
+      <title>VM Host Machine</title>
+      <link>https://www.ocurrent.org/docs/ocurrent-deployer/vm-host/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/ocurrent-deployer/vm-host/</guid>
+      <description>VM Host Machine</description>
+    </item>
+    
+    <item>
+      <title>Write your own plugin</title>
+      <link>https://www.ocurrent.org/docs/ocurrent/writing_plugins/</link>
+      <pubDate>Wed, 16 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.ocurrent.org/docs/ocurrent/writing_plugins/</guid>
+      <description>Write your own plugin</description>
     </item>
     
     <item>

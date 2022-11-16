@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Readme</title>
+    <base href="https://www.ocurrent.org/" />
+    <meta charset="UTF-8" />
+    <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1"
+    />
+    <meta property="og:title" content="Readme" />
+<meta property="og:description" content="Readme" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.ocurrent.org/docs/opam-health-check/readme/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2022-11-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-11-16T00:00:00+00:00" />
+
+
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://www.ocurrent.org//main.css"
+    />
+</head>
+
+
+    <body>
+        <div id="menu">
+    <h1>
+        <a
+            href="/"
+            title="homepage"
+            >OCurrent</a
+        >
+    </h1>
+    <ul>
+        
+        <li>
+            <a
+                href="/blog"
+                title="blog"
+                >Blog</a
+            >
+        </li>
+        
+        <li>
+            <a
+                href="/docs"
+                title="docs"
+                >Docs</a
+            >
+        </li>
+        
+        <li>
+            <a
+                href="/examples"
+                title="examples"
+                >Examples</a
+            >
+        </li>
+        
+        <li>
+            <a
+                href="/ocurrent"
+                title="api"
+                >API</a
+            >
+        </li>
+        
+        <li>
+            <a
+                href="/community"
+                title="community"
+                >Community</a
+            >
+        </li>
+        
+    </ul>
+</div>
+
+
+        <div id="container">
+            <main>
+
+<h1>Readme</h1>
+
+
+<h3 id="how-to-install-opam-health-check">How to install opam-health-check:</h3>
+<pre tabindex="0"><code>$ opam pin add opam-health-check .
+</code></pre><h3 id="how-to-use-opam-health-check-locally">How to use opam-health-check locally:</h3>
+<p>For opam-health-check to work you need to start the server like so:</p>
+<pre tabindex="0"><code>$ opam-health-serve --connect &#34;$ocluster_cap&#34; &#34;$workdir&#34;
+</code></pre><p>For instance:</p>
+<pre tabindex="0"><code>$ workdir=/tmp/opam-health-check
+$ ocluster_cap=&#34;$HOME/ocluster.cap&#34;
+$ opam-health-serve --connect &#34;$ocluster_cap&#34; &#34;$workdir&#34;
+</code></pre><p>Now simply use the <code>opam-health-check</code> command. First you need to initialize it like so:</p>
+<pre tabindex="0"><code>$ opam-health-check init --from-local-workdir &#34;$workdir&#34;
+</code></pre><p>Now you can send any command to the server using the <code>opam-health-check</code> command.
+All subcommands may be listed with <code>opam-health-check --help</code></p>
+<h3 id="ocluster-capability-file">OCluster capability file</h3>
+<p>opam-health-check now uses OCluster for its daily use. This means you need
+access to an OCluster instance with its dedicated capability file, which is
+given to the server through the <code>--connect</code> option.</p>
+<p>To set this up locally, you will need to get run the OCluster scheduler and one or more workers. The
+sequence of steps is:</p>
+<ol>
+<li>Run the OCluster scheduler probably with the public address <code>tcp:127.0.0.1:9000</code>.</li>
+<li>Use the OCluster admin command to generate the submission capability for
+opam-health-check, it will most likely be something like
+<pre tabindex="0"><code>$ ocluster-admin add-client --connect ./capnp-secrets/admin.cap opam-health-check &gt; ~/ocluster.cap`.
+</code></pre></li>
+<li>Add a new worker to the pool you are using.</li>
+<li>Run <code>opam-health-serve</code>.</li>
+<li>Initialise <code>opam-health-check</code> as described above, add some opam switches and
+then run the checks.</li>
+</ol>
+<h3 id="how-to-use-opam-health-check-remotely">How to use opam-health-check remotely:</h3>
+<p>As with local opam-health-check you need to have a server started somewhere and accessible.
+Don&rsquo;t forget to open the admin and http ports. Default ports are respectively 6666 and 8080.
+You can change them by modifying the yaml config file at the root of the work directory and
+restarting the server.</p>
+<p>During the first run the server creates an admin user and its key.
+To connect to the server remotely just you first need to retreive the <code>admin.key</code> file located
+in <code>&lt;workdir&gt;/keys/admin.key</code> and do <code>opam-health-check init</code>.
+From there, answer all the questions (hostname, admin-port (default: 6666), username (admin)
+and the path to the user key you just retreived).
+You now have your client tool configured with an admin user!</p>
+<p>To add new users, just use the <code>opam-health-check add-user &lt;username&gt;</code> command as the admin and
+give the key to your new user. She now just need to do the same procedure but with her username.</p>
+<p>Side note: every user have the same rights and can add new users.</p>
+<p>Enjoy.</p>
+
+
+</main>
+
+            <footer>
+    <a href="https://tarides.com/">
+        <img
+            src="/logos/tarides.png"
+            alt="Tarides logo"
+        />
+    </a>
+    <div id="license">
+        <p>
+            OCurrent is developed and maintained by Tarides for use in the OCaml open-source
+            community.
+        </p>
+        <p>
+            © 2022, the OCurrent authors. Distributed under the
+            <a href="https://github.com/ocurrent/ocurrent/blob/master/LICENSE">Apache-2.0</a>
+            license.
+        </p>
+    </div>
+</footer>
+
+        </div>
+    </body>
+</html>
