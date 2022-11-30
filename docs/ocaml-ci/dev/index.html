@@ -12,8 +12,8 @@
 <meta property="og:description" content="Development notes" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.ocurrent.org/docs/ocaml-ci/dev/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-11-16T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-11-16T00:00:00+00:00" />
+<meta property="article:published_time" content="2022-11-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-11-30T00:00:00+00:00" />
 
 
     <link
@@ -115,6 +115,7 @@ Push
   --submission-service &lt;path-to-the-submission-capability-file&gt; \
   --github-webhook-secret-file &lt;path-to-the-app-secret&gt; \
   --capnp-listen-address tcp:127.0.0.1:9001
+  --migration-path &#34;$PWD/migrations&#34;
 </code></pre><p>This will generate a capability file. See the logs for <code>Wrote capability reference to &quot;./capnp-secrets/ocaml-ci-admin.cap&quot;</code></p>
 <p>You should see the admin site on <code>localhost:8080</code></p>
 <h3 id="running-the-gitlab-pipeline-locally">Running the GitLab pipeline locally</h3>
@@ -124,11 +125,12 @@ Push
 <li>GitLab secret associated with webhooks</li>
 <li>A capability file for submitting jobs to a cluster, in this case the main ocaml-ci cluster as documented in <a href="https://github.com/ocurrent/ocluster#admin">https://github.com/ocurrent/ocluster#admin</a></li>
 </ol>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">dune <span class="nb">exec</span> -- ocaml-ci-gitlab <span class="se">\ </span>                            
-</span></span><span class="line"><span class="cl">  --gitlab-token-file &lt;your-gitlab-token&gt; <span class="se">\
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">dune <span class="nb">exec</span> -- ocaml-ci-gitlab <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --gitlab-token-file &lt;your-gitlab-token&gt; <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --gitlab-webhook-secret-file &lt;your-gitlab-secret&gt; <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --submission-service &lt;path-to-the-submission-capability-file&gt; <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --capnp-listen-address tcp:127.0.0.1:9800
+</span></span><span class="line"><span class="cl">  --migration-path <span class="s2">&#34;</span><span class="nv">$PWD</span><span class="s2">/migrations&#34;</span>
 </span></span></code></pre></div><p>This will generate a capability file. See the logs for <code>Wrote capability reference to &quot;./capnp-secrets/ocaml-ci-gitlab-admin.cap&quot;</code></p>
 <h3 id="running-the-web-client-locally">Running the web client locally</h3>
 <p>Using the capability file written out by the service, run the web client as follows:</p>
