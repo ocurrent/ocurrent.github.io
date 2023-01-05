@@ -12,8 +12,8 @@
 <meta property="og:description" content="Development notes" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.ocurrent.org/docs/ocaml-ci/dev/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2022-11-30T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-11-30T00:00:00+00:00" />
+<meta property="article:published_time" content="2023-01-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-05T00:00:00+00:00" />
 
 
     <link
@@ -141,6 +141,11 @@ Push
 <h3 id="running-a-scheduler-and-a-worker-optional">Running a scheduler and a worker (OPTIONAL)</h3>
 <p>You can run a scheduler and a worker to connect it to the CI.
 Follow the instruction from <a href="https://github.com/ocurrent/ocluster#the-scheduler-service">ocurrent/ocluster</a>.</p>
+<h3 id="migrations">Migrations</h3>
+<p>Migrations are managed using <code>omigrate.</code> If you are using an opam switch for ocaml-ci then <code>omigrate</code> should be installed and you can create a new migration by doing this from the project root:</p>
+<pre tabindex="0"><code>omigrate create --dir migrations &lt;migration-name&gt;
+</code></pre><p>This will create timestamped files in the <code>migrations</code> directory that you can then populate with the sql necessary to introduce and remove the migration (in the <code>up</code> and <code>down</code> files respectively).</p>
+<p>Migrations will not run unless the <code>--migration-path</code> flag is present when invoking <code>ocaml-ci-service.</code></p>
 
 
 </main>
