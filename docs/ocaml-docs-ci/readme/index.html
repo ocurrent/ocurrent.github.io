@@ -12,8 +12,8 @@
 <meta property="og:description" content="Readme" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.ocurrent.org/docs/ocaml-docs-ci/readme/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-03-23T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-03-23T00:00:00+00:00" />
+<meta property="article:published_time" content="2023-03-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-03-30T00:00:00+00:00" />
 
     <link
         rel="stylesheet"
@@ -85,11 +85,78 @@
 
 
 <h1 id="docs-ci">Docs CI</h1>
-<p>Building docs using odoc.</p>
-<h2 id="before-building">Before building</h2>
-<p><code>ocurrent</code>, <code>ocluster</code> and <code>ocluster/obuilder</code> are included as git submodules. Make sure they are checked out:</p>
-<pre tabindex="0"><code>git submodule update --init --recursive
-</code></pre><h2 id="running">Running</h2>
+<p><a href="https://ci.ocamllabs.io/github/ocurrent/ocaml-docs-ci"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fci.ocamllabs.io%2Fbadge%2Focurrent%2Focaml-docs-ci%2Fmaster&amp;logo=ocaml" alt="OCaml-CI Build Status"></a></p>
+<p>OCaml Docs CI (aka docs-ci) is an OCurrent pipeline used for building the documentation for ocaml.org website.
+It uses the metadata from opam-repository to work out how to build documentation for individual
+packages using <a href="">voodoo</a>, the OCaml package documentation generator, and generates a HTML output
+suitable for ocaml.org server to present.</p>
+<h2 id="installation">Installation</h2>
+<p>Get the code with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone --recursive https://github.com/ocurrent/ocaml-docs-ci.git
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ocaml-docs-ci
+</span></span></code></pre></div><p>Note: you need to clone with &ndash;recursive because this project uses submodules (it depends on some packages that aren&rsquo;t released yet). If you forget, <code>git submodule update --init</code> will fetch them.</p>
+<p>Then you need an opam 2.1 switch using OCaml 4.14. Recommend using this command to setup a local switch just for <code>docs-ci</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Create a local switch with packages and test dependencies installed</span>
+</span></span><span class="line"><span class="cl">opam switch create . 4.14.1 --deps-only --with-test -y
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Run the build</span>
+</span></span><span class="line"><span class="cl">dune build
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Run the tests</span>
+</span></span><span class="line"><span class="cl">dune build @runtest
+</span></span></code></pre></div><h2 id="documentation">Documentation</h2>
+<p>At a high level <code>docs-ci</code> purpose is to compile the documentation of every package in the <code>opamverse</code>. To do this is generates
+a dependency universe. For each package (along with the version), the documentation is generated for it plus all of its
+dependencies. This documentation is then collected into a <code>documentation set</code> and provided to the ocaml.org service.
+The <a href="">voodoo</a> tool defines the on disk format for the <code>documentation set</code>.</p>
+<p>For further details on how <code>docs-ci</code> works read the <a href="doc/pipeline-diagram.md">pipeline diagram</a>.</p>
+<h2 id="deployment">Deployment</h2>
+<p><code>ocaml-docs-ci</code> is deployed as into two environments, with <a href="https://deploy.ci.ocaml.org/?repo=ocurrent/ocaml-docs-ci&amp;">ocurrent-deployer</a>. The application is deployed as a series of Docker containers from a git branch.</p>
+<p>Environments:</p>
+<table>
+<thead>
+<tr>
+<th>Environment</th>
+<th>www</th>
+<th>pipeline</th>
+<th>git branch</th>
+<th>data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Production</td>
+<td><a href="https://ocaml.org">https://ocaml.org</a></td>
+<td><a href="https://docs.ci.ocaml.org">https://docs.ci.ocaml.org</a></td>
+<td>live</td>
+<td><a href="https://docs-data.ocaml.org/">https://docs-data.ocaml.org/</a></td>
+</tr>
+<tr>
+<td>Staging</td>
+<td><a href="https://staging.ocaml.org">https://staging.ocaml.org</a></td>
+<td><a href="https://docs-staging.sw.ocaml.org">https://docs-staging.sw.ocaml.org</a></td>
+<td>staging</td>
+<td><a href="https://docs-data.ocamllabs.io/">https://docs-data.ocamllabs.io/</a></td>
+</tr>
+</tbody>
+</table>
+<p>OAuth integration provided by GitHub OAuth Apps hosted under the OCurrent organisation.
+See <a href="https://github.com/organizations/ocurrent/settings/applications">https://github.com/organizations/ocurrent/settings/applications</a></p>
+<p>The infrastructure for <code>ocaml-docs-ci</code> is managed via Ansible.
+Contact @tmcgilchrist or @mtelevers if you need access or have questions.</p>
+<p>To deploy a new version of <code>docs-ci</code>:</p>
+<ol>
+<li>Create a PR and wait for the GH Checks to run (ocaml-ci compiles the code and ocurrent-deployer checks it can build the Dockerfiles for the project)</li>
+<li>Test the changes on <code>staging</code> environment by git cherry picking the commits to that branch and pushing it</li>
+<li>Check <a href="https://deploy.ci.ocaml.org/?repo=ocurrent/ocaml-docs-ci&amp;">deploy.ci.ocaml.org</a> for <code>ocaml-docs-ci</code></li>
+</ol>
+<p>Follow a similar process for <code>live</code> exercising extra caution as it could impact the live ocaml.org service.</p>
+<p>The git history on <code>live</code> and <code>staging</code> <strong>MUST</strong> be kept in sync with the default branch.
+Those branches should be the same as <code>main</code> plus or minus some commits from a PR.</p>
+<h2 id="remote-api">Remote API</h2>
+<p>TODO Provide cli over canpnp.</p>
+<h2 id="local-development">Local Development</h2>
+<p><code>docs-ci</code> is runable as:</p>
 <pre tabindex="0"><code>dune exec -- ocaml-docs-ci \
     --ocluster-submission cap/XXX.cap \
     --ssh-host ci.mirage.io \
@@ -101,8 +168,16 @@
     --jobs 6 \
     --filter mirage \
     --limit 6
-</code></pre><h2 id="documentation">Documentation</h2>
-<p>To understand better how it works under the hood, you can check the <a href="doc/pipeline-diagram.md">pipeline</a> documentation.</p>
+</code></pre><p>A <a href="docker-compose.yml">docker-compose.yml</a> is provided to setup an entire <code>docs-ci</code> environment including:</p>
+<ul>
+<li>ocluster scheduler</li>
+<li>ocluster Linux x86 worker</li>
+<li>nginx webserver for generated docs</li>
+<li>docs-ci built from the local git checkout</li>
+</ul>
+<p>First we need to bootstrap an ocluster-worker</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker build -t ocluster-worker -f vendor/ocluster/Dockerfile.worker.alpine vendor/ocluster
+</span></span></code></pre></div><p>then create the environment using <code>docker-compose -f docker-compose.yml up</code></p>
 
 
 </main>
