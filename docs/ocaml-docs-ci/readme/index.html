@@ -12,8 +12,8 @@
 <meta property="og:description" content="Readme" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.ocurrent.org/docs/ocaml-docs-ci/readme/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-03-30T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-03-30T00:00:00+00:00" />
+<meta property="article:published_time" content="2023-06-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-06-22T00:00:00+00:00" />
 
     <link
         rel="stylesheet"
@@ -85,7 +85,7 @@
 
 
 <h1 id="docs-ci">Docs CI</h1>
-<p><a href="https://ci.ocamllabs.io/github/ocurrent/ocaml-docs-ci"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fci.ocamllabs.io%2Fbadge%2Focurrent%2Focaml-docs-ci%2Fmaster&amp;logo=ocaml" alt="OCaml-CI Build Status"></a></p>
+<p><a href="https://ocaml.ci.dev/github/ocurrent/ocaml-docs-ci"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Focaml.ci.dev%2Fbadge%2Focurrent%2Focaml-docs-ci%2Fmain&amp;logo=ocaml" alt="OCaml-CI Build Status"></a></p>
 <p>OCaml Docs CI (aka docs-ci) is an OCurrent pipeline used for building the documentation for ocaml.org website.
 It uses the metadata from opam-repository to work out how to build documentation for individual
 packages using <a href="">voodoo</a>, the OCaml package documentation generator, and generates a HTML output
@@ -129,21 +129,21 @@ The <a href="">voodoo</a> tool defines the on disk format for the <code>document
 <td><a href="https://ocaml.org">https://ocaml.org</a></td>
 <td><a href="https://docs.ci.ocaml.org">https://docs.ci.ocaml.org</a></td>
 <td>live</td>
-<td><a href="https://docs-data.ocaml.org/">https://docs-data.ocaml.org/</a></td>
+<td><a href="http://docs-data.ocaml.org">http://docs-data.ocaml.org</a></td>
 </tr>
 <tr>
 <td>Staging</td>
 <td><a href="https://staging.ocaml.org">https://staging.ocaml.org</a></td>
-<td><a href="https://docs-staging.sw.ocaml.org">https://docs-staging.sw.ocaml.org</a></td>
+<td><a href="https://staging.docs.ci.ocaml.org">https://staging.docs.ci.ocaml.org</a></td>
 <td>staging</td>
-<td><a href="https://docs-data.ocamllabs.io/">https://docs-data.ocamllabs.io/</a></td>
+<td><a href="http://staging.docs-data.ocaml.org">http://staging.docs-data.ocaml.org</a></td>
 </tr>
 </tbody>
 </table>
 <p>OAuth integration provided by GitHub OAuth Apps hosted under the OCurrent organisation.
 See <a href="https://github.com/organizations/ocurrent/settings/applications">https://github.com/organizations/ocurrent/settings/applications</a></p>
 <p>The infrastructure for <code>ocaml-docs-ci</code> is managed via Ansible.
-Contact @tmcgilchrist or @mtelevers if you need access or have questions.</p>
+Contact @tmcgilchrist or @mtelvers if you need access or have questions.</p>
 <p>To deploy a new version of <code>docs-ci</code>:</p>
 <ol>
 <li>Create a PR and wait for the GH Checks to run (ocaml-ci compiles the code and ocurrent-deployer checks it can build the Dockerfiles for the project)</li>
@@ -175,9 +175,9 @@ Those branches should be the same as <code>main</code> plus or minus some commit
 <li>nginx webserver for generated docs</li>
 <li>docs-ci built from the local git checkout</li>
 </ul>
-<p>First we need to bootstrap an ocluster-worker</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker build -t ocluster-worker -f vendor/ocluster/Dockerfile.worker.alpine vendor/ocluster
-</span></span></code></pre></div><p>then create the environment using <code>docker-compose -f docker-compose.yml up</code></p>
+<p>Run this command to create an environment:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ docker-compose -f docker-compose.yml up
+</span></span></code></pre></div><p>You should then be able to watch the pipeline in action at <code>http://localhost:8080</code>.</p>
 
 
 </main>

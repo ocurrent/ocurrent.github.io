@@ -12,8 +12,8 @@
 <meta property="og:description" content="Readme" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.ocurrent.org/docs/ocaml-ci/readme/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2023-03-30T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-03-30T00:00:00+00:00" />
+<meta property="article:published_time" content="2023-06-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-06-22T00:00:00+00:00" />
 
     <link
         rel="stylesheet"
@@ -85,7 +85,7 @@
 
 
 <h1 id="ocaml-ci">OCaml-CI</h1>
-<p><a href="https://ci.ocamllabs.io/github/ocurrent/ocaml-ci"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fci.ocamllabs.io%2Fbadge%2Focurrent%2Focaml-ci%2Fmaster&amp;logo=ocaml" alt="OCaml-CI Build Status"></a></p>
+<p><a href="https://ocaml.ci.dev/github/ocurrent/ocaml-ci"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Focaml.ci.dev%2Fbadge%2Focurrent%2Focaml-ci%2Fmaster&amp;logo=ocaml" alt="OCaml-CI Build Status"></a></p>
 <p>This is an <a href="https://github.com/ocurrent/ocurrent">OCurrent</a> pipeline that provides CI for OCaml projects hosted on GitHub.
 It uses metadata from the project’s opam and dune files to work out what to build,
 and uses caching to make builds fast. It automatically tests projects against
@@ -108,7 +108,7 @@ previously cached build step as long as the opam files don&rsquo;t change.</p>
 <li>Ask us to add you to the alpha-testers list by submitting a PR against this
 repository adding yourself to <code>--github-account-allowlist</code> in <code>stack.yml</code>. eg <a href="https://github.com/ocurrent/ocaml-ci/pull/346">https://github.com/ocurrent/ocaml-ci/pull/346</a>. Additionally, please add yourself to <code>deploy-data/github-organisations.txt</code>.</li>
 <li>Add a status badge from the OCaml-CI endpoint with:
-<pre tabindex="0"><code>[![OCaml-CI Build Status](https://img.shields.io/endpoint?url=https://ci.ocamllabs.io/badge/&lt;user&gt;/&lt;repo&gt;/&lt;branch&gt;&amp;logo=ocaml)](https://ci.ocamllabs.io/github/&lt;user&gt;/&lt;repo&gt;)
+<pre tabindex="0"><code>[![OCaml-CI Build Status](https://img.shields.io/endpoint?url=https://ocaml.ci.dev/badge/&lt;user&gt;/&lt;repo&gt;/&lt;branch&gt;&amp;logo=ocaml)](https://ocaml.ci.dev/github/&lt;user&gt;/&lt;repo&gt;)
 </code></pre></li>
 <li>Report bugs :-)</li>
 </ol>
@@ -116,7 +116,7 @@ repository adding yourself to <code>--github-account-allowlist</code> in <code>s
 <p>Get the code with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone --recursive https://github.com/ocurrent/ocaml-ci.git
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> ocaml-ci
-</span></span><span class="line"><span class="cl">opam install --deps-only ./ocaml-version ./ocaml-dockerfile ./ocluster ./ocurrent .
+</span></span><span class="line"><span class="cl">opam install --deps-only ./ocaml-dockerfile ./ocluster ./ocurrent ./solver-service .
 </span></span></code></pre></div><p>Note: you need to clone with <code>--recursive</code> because this project uses submodules
 (it depends on some packages that aren&rsquo;t released yet).
 If you forget, <code>git submodule update --init</code> will fetch them.</p>
@@ -181,7 +181,7 @@ least the first 6 characters. e.g.</p>
 </span></span></code></pre></div><h2 id="deployment">Deployment</h2>
 <p><code>ocaml-ci</code> is deployed as three docker images built from <code>Dockerfile</code>, <code>Dockerfile.gitlab</code> and <code>Dockerfile.web</code>, with
 the live service following <code>live-engine</code> for the backend and <code>live-www</code> for the frontend.
-An ocurrent-deployer <a href="deploy.ci3.ocamllabs.io">pipeline</a> watches these branches, performing a docker build
+An ocurrent-deployer <a href="deploy.ci.dev">pipeline</a> watches these branches, performing a docker build
 and deploy whenever it sees a new commit. The live branches should typically contain commits from <code>master</code> plus potentially
 short lived commits for testing changes that are later merged into <code>master</code>.</p>
 <p>To deploy code changes either from <code>master</code> or a branch:</p>
@@ -191,8 +191,12 @@ short lived commits for testing changes that are later merged into <code>master<
 <li>git push -u upstream HEAD:live-www</li>
 </ul>
 <p>To deploy changes to <code>stack.yml</code> run (assuming a docker context with sufficient access):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker -c ci.ocamllabs.io stack deploy -c stack.yml ocaml-ci
-</span></span></code></pre></div><h2 id="local-development">Local development</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker -c ocaml.ci.dev stack deploy -c stack.yml ocaml-ci
+</span></span></code></pre></div><h2 id="opam-repository-updates">Opam repository updates</h2>
+<p>When it is updated <a href="https://github.com/ocaml/opam-repository"><code>opam-repository</code></a> sends a webhook to <code>Ocaml-ci</code> triggering its pipelines.
+This mechanism allows builds to remain up to date with changes in the opam package ecosystem. For further details of this webhook,
+please contact a maintainer of <code>opam-repository</code>.</p>
+<h2 id="local-development">Local development</h2>
 <p>See <a href="doc/dev.md">this document</a> for set up and running the server and web components locally.</p>
 
 
