@@ -12,8 +12,8 @@
 <meta property="og:description" content="Readme" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.ocurrent.org/docs/ocaml-docs-ci/readme/" /><meta property="article:section" content="docs" />
-<meta property="article:published_time" content="2024-09-23T00:00:00+00:00" />
-<meta property="article:modified_time" content="2024-09-23T00:00:00+00:00" />
+<meta property="article:published_time" content="2024-11-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-11-27T00:00:00+00:00" />
 
     <link
         rel="stylesheet"
@@ -92,8 +92,7 @@ It uses the metadata from opam-repository to work out how to build documentation
 <p>Get the code with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git clone --recursive https://github.com/ocurrent/ocaml-docs-ci.git
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> ocaml-docs-ci
-</span></span></code></pre></div><p>Note: you need to clone with &ndash;recursive because this project uses submodules (it depends on some packages that aren&rsquo;t released yet). If you forget, <code>git submodule update --init</code> will fetch them.</p>
-<p>Then you need an opam 2.1 switch using OCaml 4.14. Recommend using this command to setup a local switch just for <code>docs-ci</code>.</p>
+</span></span></code></pre></div><p>Then you need an opam 2.1 switch using OCaml 4.14. Recommend using this command to setup a local switch just for <code>docs-ci</code>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Create a local switch with packages and test dependencies installed</span>
 </span></span><span class="line"><span class="cl">opam switch create . 4.14.1 --deps-only --with-test -y
 </span></span><span class="line"><span class="cl">
